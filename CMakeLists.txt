@@ -9,7 +9,5 @@ add_library(${LIB_NAME} STATIC ${LOGC_SOURCES})
 
 target_include_directories(${LIB_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-target_compile_features(${LIB_NAME} PUBLIC c_std_99)
-
 set_target_properties(${LIB_NAME} PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
