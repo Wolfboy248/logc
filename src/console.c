@@ -14,6 +14,7 @@ char* LOG_consoleFormatter(const LOG_LogMessage* msg) {
 
   switch (msg->level) {
     case LOG_LEVEL_ERROR:
+    case LOG_LEVEL_FATAL:
       col = TERMINAL_ERROR;
       break;
     case LOG_LEVEL_WARN:
@@ -39,9 +40,9 @@ void LOG_consoleWrite(const LOG_LogMessage* msg, const LOG_LogDriver* driver) {
 LOG_LogDriver LOG_consoleDriver = {
   .name = "console",
 #ifdef NDEBUG
-  .level = LOG_LEVEL_DEBUG,
-#else 
   .level = LOG_LEVEL_WARN,
+#else 
+  .level = LOG_LEVEL_DEBUG,
 #endif
   .formatter = LOG_consoleFormatter,
   .write = LOG_consoleWrite,

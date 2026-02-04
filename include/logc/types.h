@@ -12,6 +12,7 @@ typedef enum {
   LOG_LEVEL_INFO,
   LOG_LEVEL_WARN,
   LOG_LEVEL_ERROR,
+  LOG_LEVEL_FATAL,
 } LOG_LogLevel;
 
 const char* LOG_LogLevelStr(LOG_LogLevel level);
