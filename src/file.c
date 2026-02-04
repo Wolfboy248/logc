@@ -28,7 +28,11 @@ void LOG_fileWrite(const LOG_LogMessage* msg, const LOG_LogDriver* driver) {
 
 LOG_LogDriver LOG_fileDriver = {
   .name = "file",
+#ifdef NDEBUG
   .level = LOG_LEVEL_DEBUG,
+#else 
+  .level = LOG_LEVEL_WARN,
+#endif
   .formatter = LOG_fileFormatter,
   .write = LOG_fileWrite,
   .enabled = false,

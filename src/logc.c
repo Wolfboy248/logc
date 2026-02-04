@@ -31,7 +31,7 @@ void LOG_Log(LOG_LogLevel level, const char* file, int line, const char* fmt, ..
 
   for (int i = 0; i < LOG_globalLogger.driverCount; i++) {
     LOG_LogDriver* driver = LOG_globalLogger.drivers[i];
-    if (driver->enabled && level >= driver->level) {
+    if (driver->enabled && level <= driver->level) {
       driver->write(&msg, driver);
     }
   }

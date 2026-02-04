@@ -38,7 +38,11 @@ void LOG_consoleWrite(const LOG_LogMessage* msg, const LOG_LogDriver* driver) {
 
 LOG_LogDriver LOG_consoleDriver = {
   .name = "console",
+#ifdef NDEBUG
   .level = LOG_LEVEL_DEBUG,
+#else 
+  .level = LOG_LEVEL_WARN,
+#endif
   .formatter = LOG_consoleFormatter,
   .write = LOG_consoleWrite,
   .user_data = NULL,
