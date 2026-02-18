@@ -5,6 +5,7 @@ extern "C" {
 #endif
 
 #include <stdbool.h>
+#include <stdint.h>
 
 typedef enum {
   LOG_LEVEL_VERBOSE,
@@ -15,6 +16,9 @@ typedef enum {
   LOG_LEVEL_FATAL,
 } LOG_LogLevel;
 
+typedef uint16_t LOG_Source;
+#define LOG_SOURCE_INVALID 0
+
 const char* LOG_LogLevelStr(LOG_LogLevel level);
 
 typedef struct LOG_LogMessage {
@@ -22,6 +26,7 @@ typedef struct LOG_LogMessage {
   const char* file;
   int line;
   const char* message;
+  LOG_Source source;
 } LOG_LogMessage;
 
 struct LOG_LogDriver;
